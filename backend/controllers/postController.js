@@ -1,16 +1,13 @@
-import app from '../server.js'
-import Post from '../models/post'
-
-const mongoose = require('mongoose');
+const express = require('express');
+const Post = require('../models/post');
 const postRoutes = express.Router();
 
-app.use('/posts', postRoutes);
 
 // index
-postRoutes.route('/').get((req, res) => {
+postRoutes.route('/posts').get((req, res) => {
   Post.find((err, posts) => { // also works: find({}, (err, posts))
     if (err) {
-      console.log(err);
+      res.send(err);
     } else {
       res.json(posts)
     }
@@ -18,11 +15,11 @@ postRoutes.route('/').get((req, res) => {
 });
 
 // show
-postRoutes.route('/:id').get((req, res) => {
+postRoutes.route('/posts/:id').get((req, res) => {
   let id = req.params.id
   Post.findById(id, (err, post) => {
     if (err) {
-      console.log(err);
+      res.send(err);
     } else {
       res.json(post)
     }
@@ -30,11 +27,11 @@ postRoutes.route('/:id').get((req, res) => {
 })
 
 // new
-postRoutes.route('/new').post((req, res) => {
+postRoutes.route('/posts/new').post((req, res) => {
   let newPost = new Post(req.body)
   newPost.save((err, post) => {
     if (err) {
-      console.log(err);
+      res.send(err);
     } else {
       res.json(post)
     }
@@ -42,10 +39,10 @@ postRoutes.route('/new').post((req, res) => {
 })
 
 // update
-postRoutes.route('/update/:id').put((req, res) => {
+postRoutes.route('/posts/update/:id').put((req, res) => {
   Post.findOneAndUpdate({_id: req.params.postId}, req.body, (err, post) => {
     if (err) {
-      console.log(err);
+      res.send(err);
     } else {
       res.json(post)
     }
@@ -53,10 +50,10 @@ postRoutes.route('/update/:id').put((req, res) => {
 })
 
 // destroy
-postRoutes.route('/destroy/:id').delete((req, res) => {
+postRoutes.route('/posts/destroy/:id').delete((req, res) => {
   Post.findOneAndDelete({_id: req.params.postId}, req.body, (err) => {
     if (err) {
-      console.log(err);
+      res.send(err);
     } else {
       res.json({message: `Post ${req.params.postId} successfully deleted`})
     }

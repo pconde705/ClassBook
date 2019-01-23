@@ -1,14 +1,26 @@
 const express = require('express');
-const app = express();
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const mongoose = require('mongoose');
+
+const keys = require('./config/keys');
+require('./models/post')
+
+const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
 
+const router = express.Router()
 
-mongoose.connect('mongodb://127.0.0.1:27017/ClassBook', { useNewUrlParser: true })
+// Home Page route
+router.get('/', (req, res) => {
+  res.send("Home Page")
+})
+
+// mlab
+mongoose.connect(keys.mongoURI, { useNewUrlParser: true })
+
 const connection = mongoose.connection;
 
 connection.once('open', function() {
@@ -17,9 +29,10 @@ connection.once('open', function() {
 
 
 const PORT = process.env.PORT || 3000; // for production deployment use standard host port, for dev we use 3000
+
 app.listen(PORT, () => {
   console.log("Server is running on Port: ", PORT);
 })
 
 
-module.exports = app;
+// module.exports = app;
