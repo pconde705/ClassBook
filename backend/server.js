@@ -3,7 +3,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const PORT = 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -17,6 +16,10 @@ connection.once('open', function() {
 })
 
 
+const PORT = process.env.PORT || 3000; // for production deployment use standard host port, for dev we use 3000
 app.listen(PORT, () => {
   console.log("Server is running on Port: ", PORT);
 })
+
+
+module.exports = app;
