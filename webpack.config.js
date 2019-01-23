@@ -1,9 +1,13 @@
 const path = require('path')
 
+const BUILD_DIR = path.resolve(__dirname, 'src/public');
+const APP_DIR = path.resolve(__dirname, 'frontend');
+
+
 module.exports = {
-  entry: "./frontend/main.jsx",
+  entry: APP_DIR + "/main.jsx",
   output: {
-    path: path.resolve("./src/public"),
+    path: BUILD_DIR,
     filename: "bundle.js"
   },
   module: {
