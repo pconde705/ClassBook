@@ -12,8 +12,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-// Serve static files from React into an auto created build folder
-app.use(express.static(path.join(__dirname, 'frontend/build')));
+app.use(express.static(path.join(__dirname, 'frontend/src')));
 
 
 // mLab
@@ -35,7 +34,7 @@ app.use('/api/posts', postRoutes);
 // If any request doesn't match, we send it back to React
 // build file created after the push to heroku is made
 app.use('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/frontend/build/index.html'))
+  res.sendFile(path.join(__dirname + '/frontend/src/index.html'))
 })
 
 const PORT = process.env.PORT || 3000; // for production deployment use standard host port, for dev we use 3000
