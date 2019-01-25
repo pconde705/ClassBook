@@ -1,10 +1,11 @@
-const moongoose = require('mongoose');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema; // can also write const { Schema } = mongoose;
 
 let Post = new Schema({
   text: {
     type: String,
-    required: true
+    maxlength: 280,
+    required: true,
   }
 });
 

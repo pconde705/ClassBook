@@ -2,11 +2,11 @@
   "name": "mern-app",
   "version": "1.0.0",
   "description": "",
-  "main": "./frontend/main.jsx",
+  "main": "./react-redux/main.jsx",
   "scripts": {
     "start": "webpack --watch --mode development",
-    "dev": "webpack-dev-server --mode development --content-base=src",
-    "build": "webpack --watch --mode production"
+    "dev": "webpack-dev-server --mode development",
+    "build": "webpack --mode production"
   },
   "author": "",
   "license": "ISC",

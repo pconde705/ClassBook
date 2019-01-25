@@ -1,7 +1,8 @@
 const path = require('path')
 
 const BUILD_DIR = path.resolve(__dirname, 'src/public');
-const APP_DIR = path.resolve(__dirname, 'frontend');
+const HTML_DIR = path.resolve(__dirname, 'src');
+const APP_DIR = path.resolve(__dirname, 'react-redux');
 
 
 module.exports = {
@@ -25,5 +26,8 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     extensions: [".js", ".jsx", "*"]
+  },
+  devServer: {
+    contentBase: HTML_DIR
   }
 };
