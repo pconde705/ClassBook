@@ -26,7 +26,14 @@ connection.once('open', function() {
     console.log("MongoDB database connection established successfully");
 })
 
+// User
+require('./models/user')
+const userRoutes = require('./controllers/userController');
+app.use('/api/users', userRoutes);
+require('./config/passport');
+
 // Post
+require('./models/post')
 const postRoutes = require('./controllers/postController');
 app.use('/api/posts', postRoutes);
 
