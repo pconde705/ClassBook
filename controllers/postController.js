@@ -2,10 +2,10 @@ const express = require('express');
 
 const Post = require('../models/post');
 
-const postRoutes = express.Router();
+const postRouter = express.Router();
 
 // index
-postRoutes.route('/').get((req, res) => {
+postRouter.route('/').get((req, res) => {
   Post.find((err, posts) => { // also works: find({}, (err, posts))
     if (err) {
       res.send(err);
@@ -16,7 +16,7 @@ postRoutes.route('/').get((req, res) => {
 });
 
 // show
-postRoutes.route('/:id').get((req, res) => {
+postRouter.route('/:id').get((req, res) => {
   let id = req.params.id
   Post.findById(id, (err, post) => {
     if (err) {
@@ -28,7 +28,7 @@ postRoutes.route('/:id').get((req, res) => {
 })
 
 // new
-postRoutes.route('/new').post((req, res) => {
+postRouter.route('/new').post((req, res) => {
   let newPost = new Post(req.body)
   newPost.save((err, post) => {
     if (err) {
@@ -40,7 +40,7 @@ postRoutes.route('/new').post((req, res) => {
 })
 
 // update
-postRoutes.route('/update/:id').put((req, res) => {
+postRouter.route('/update/:id').put((req, res) => {
   Post.findOneAndUpdate({_id: req.params.id}, req.body, { runValidators: true }, (err, post) => {
     if (err) {
       res.send(err);
@@ -51,7 +51,7 @@ postRoutes.route('/update/:id').put((req, res) => {
 })
 
 // destroy
-postRoutes.route('/destroy/:id').delete((req, res) => {
+postRouter.route('/destroy/:id').delete((req, res) => {
   Post.findOneAndDelete({_id: req.params.id}, req.body, (err) => {
     if (err) {
       res.send(err);
@@ -61,4 +61,4 @@ postRoutes.route('/destroy/:id').delete((req, res) => {
   })
 })
 
-module.exports = postRoutes;
+module.exports = postRouter;
