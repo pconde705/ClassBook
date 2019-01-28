@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
+import './rootStyle.css'
 
 import SessionContainer from './session/session_container';
 

@@ -29,8 +29,9 @@ connection.once('open', function() {
 // User
 require('./models/user')
 const userRoutes = require('./controllers/userController');
+const sessionRoutes = require('./controllers/sessionController');
 app.use('/api/users', userRoutes);
-require('./config/passport');
+app.use('/api/session', sessionRoutes);
 
 // Post
 require('./models/post')

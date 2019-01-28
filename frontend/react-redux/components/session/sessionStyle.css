@@ -1,0 +1,16 @@
+
+.sign-up-header {
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: #3C5B96;
+}
+.sign-up-logo {
+  font-family: 'Paytone One', sans-serif;
+  font-size: 34px;
+}
+
+.sign-up-forms {
+  display: flex;
+  align-items: center;
+}

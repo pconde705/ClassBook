@@ -3,5 +3,6 @@ bundle.js.map
 node_modules/
 
 dev.js
+sessionKey.js
 
 .DS_Store
