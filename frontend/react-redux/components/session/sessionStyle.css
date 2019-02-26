@@ -8,7 +8,7 @@
 }
 
 .login-header {
-  width: 980px;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
@@ -60,4 +60,14 @@
 
 .signup-main {
   background: #edf0f5;
+  height: 600px;
+}
+
+.signup-slogan {
+  font-family: 'Raleway', sans-serif;
+  font-size: 28px;
+}
+.signup-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 28px;
 }

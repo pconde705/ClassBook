@@ -36,12 +36,12 @@ class Session extends React.Component {
           </div>
         </header>
         <main className="signup-main">
-          <div>
+          <div c>
             <div>
-              <p>Connect with you friends</p>
+              <p className="signup-slogan">Connect with you friends</p>
             </div>
             <div>
-              <p>Sign Up</p>
+              <p className="signup-title">Sign Up</p>
             </div>
           </div>
         </main>
