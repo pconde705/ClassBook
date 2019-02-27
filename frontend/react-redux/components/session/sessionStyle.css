@@ -71,3 +71,8 @@
   font-family: 'Raleway', sans-serif;
   font-size: 28px;
 }
+
+.signup-overall-div {
+  display: flex;
+  justify-content: space-around;
+}
