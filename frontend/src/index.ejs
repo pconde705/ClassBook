@@ -11,5 +11,10 @@
     </main>
     <script type="text/javascript" src="./public/bundle.js">
     </script>
+    <script type="text/javascript">
+      <% if (currentUser) { %>
+        window.currentUser = <%- (currentUser) %>
+      <% } %>
+    </script>
   </body>
 </html>

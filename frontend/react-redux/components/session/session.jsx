@@ -8,6 +8,8 @@ class Session extends React.Component {
     this.state = {}
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+
   }
 
   componentDidMount() {
@@ -16,6 +18,12 @@ class Session extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+  }
+
+  handleInput(type) {
+    return (e) => {
+      this.setState({ [type]: e.target.value })
+    }
   }
 
   render() {
@@ -33,8 +41,8 @@ class Session extends React.Component {
                   <td><p className="login-p">Password</p></td>
                 </tr>
                 <tr>
-                  <td className="login-td"><input className="login-input"></input></td>
-                  <td className="login-td"><input className="login-input"></input></td>
+                  <td className="login-td"><input onChange={this.handleInput('email')} className="login-input"></input></td>
+                  <td className="login-td"><input type="password" onChange={this.handleInput('password')} className="login-input"></input></td>
                   <td><button className="login-button">Log In</button></td>
                 </tr>
               </tbody>
@@ -49,11 +57,11 @@ class Session extends React.Component {
             <div>
               <p className="signup-title">Sign Up</p>
               <form onSubmit={this.handleSubmit}>
-                <input placeholder="First Name"></input>
-                <input placeholder="Last Name"></input>
-                <input placeholder="Email"></input>
-                <input placeholder="Password"></input>
-                <input type="Submit" value="Sign Up"></input>
+                <input onChange={this.handleInput('fname')} placeholder="First Name"></input>
+                <input onChange={this.handleInput('lname')} placeholder="Last Name"></input>
+                <input onChange={this.handleInput('email')} placeholder="Email"></input>
+                <input onChange={this.handleInput('password')} placeholder="Password"></input>
+                <button type="Submit">Sign Up</button>
               </form>
             </div>
           </div>

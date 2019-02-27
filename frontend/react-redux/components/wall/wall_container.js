@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Wall from './session'
+import Wall from './wall'
 
 
 const mapStateToProps = state => ({

@@ -11,8 +11,8 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
 app.use(express.static(path.join(__dirname, 'frontend/src')));
+app.set('view engine', 'ejs');
 
 
 // mLab
@@ -42,7 +42,12 @@ app.use('/api/posts', postRoutes);
 // If any request doesn't match, we send it back to React
 // build file created after the push to heroku is made
 app.use('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/frontend/src/index.html'))
+  res.header('Content-Type', 'html') // page crashes if this is not set
+  res.sendFile(path.join(__dirname + '/frontend/src/index.ejs'))
+  let currentUser = null;
+  if (req.user) {
+    currentUser = JSON.stringify(req.user);
+  }
 })
 
 const PORT = process.env.PORT || 3000; // for production deployment use standard host port, for dev we use 3000
